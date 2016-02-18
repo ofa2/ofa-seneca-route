@@ -1,0 +1,22 @@
+{
+  "name": "framework-seneca-route",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gongxiancao/framework-seneca-route.git"
+  },
+  "author": "gongxiancao@hotmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gongxiancao/framework-seneca-route/issues"
+  },
+  "homepage": "https://github.com/gongxiancao/framework-seneca-route#readme",
+  "dependencies": {
+    "lodash": "^4.5.0"
+  }
+}
