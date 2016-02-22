@@ -22,6 +22,12 @@ module.exports = function (done) {
     }
     self.seneca[method](pattern, actionMethod);
   });
-  self.seneca.listen();
+  self.seneca
+    .use('seneca-amqp-transport')
+    .listen({
+      name: 'create_act.queue', // This is optional
+      type: 'amqp',
+      pin: 'role:api'
+    });
   process.nextTick(done);
 };
