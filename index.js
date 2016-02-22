@@ -22,5 +22,6 @@ module.exports = function (done) {
     }
     self.seneca[method](pattern, actionMethod);
   });
+  self.seneca.listen();
   process.nextTick(done);
 };
