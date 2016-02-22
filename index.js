@@ -22,12 +22,19 @@ module.exports = function (done) {
     }
     self.seneca[method](pattern, actionMethod);
   });
+
+  var senecaConnectionName = (self.config.seneca || {}).connection;
+  var senecaConnection = self.config.connections[senecaConnectionName];
+  if(senecaConnectionName && !senecaConnection) {
+    throw new Error('unknown seneca connection:' + senecaConnectionName);
+  }
+
   self.seneca
-    .use('seneca-amqp-transport')
-    .listen({
+    .use(require('seneca-amqp-transport'))
+    .listen(_.merge({
       name: 'create_act.queue', // This is optional
       type: 'amqp',
       pin: 'role:api'
-    });
+    }, senecaConnection));
   process.nextTick(done);
 };
