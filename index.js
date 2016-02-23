@@ -30,11 +30,7 @@ module.exports = function (done) {
   }
 
   self.seneca
-    .use(require('seneca-amqp-transport'))
-    .listen(_.merge({
-      name: 'create_act.queue', // This is optional
-      type: 'amqp',
-      pin: 'role:api'
-    }, senecaConnection));
+    .use(senecaConnection.transport)
+    .listen(senecaConnection.options);
   process.nextTick(done);
 };
