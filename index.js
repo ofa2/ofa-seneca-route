@@ -3,6 +3,8 @@ var _ = require('lodash');
 module.exports = function (done) {
   var self = this;
   var routes = self.config.routes;
+  var pins = [];
+
   _.each(self.config.routes, function (action, key) {
     var index = key.indexOf(' ');
     var keyParts = [key.slice(0, index), key.slice(index + 1)];
@@ -20,6 +22,7 @@ module.exports = function (done) {
     if(!actionMethod) {
       throw new Error('undefined action method:' + action);
     }
+    pins.push('{' + pattern + '}');
     self.seneca[method](pattern, actionMethod);
   });
 
@@ -29,6 +32,9 @@ module.exports = function (done) {
     throw new Error('unknown seneca connection:' + senecaConnectionName);
   }
 
+  if(!senecaConnection.options.pins && !senecaConnection.options.pin) {
+    senecaConnection.options.pin = '[' + pins.join(',') + ']';
+  }
   self.seneca
     .use(senecaConnection.transport)
     .listen(senecaConnection.options);
