@@ -16,11 +16,16 @@ module.exports = function (done) {
     }
 
     var actionParts = action.split('.');
-    var controller = self.controllers[actionParts[0]];
+    var controllerName = actionParts[0];
+    var controller = self.controllers[controllerName];
+    if(!controller) {
+      throw new Error('undefined controller: ' + controllerName);
+    }
+
     var actionMethodName = actionParts[1];
     var actionMethod = controller[actionMethodName];
     if(!actionMethod) {
-      throw new Error('undefined action method:' + action);
+      throw new Error('undefined action method: ' + action);
     }
     pins.push('{' + pattern + '}');
     self.seneca[method](pattern, actionMethod);
