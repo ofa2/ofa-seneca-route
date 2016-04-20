@@ -1,6 +1,7 @@
+var Promise = require('bluebird');
 var _ = require('lodash');
 
-module.exports = function (done) {
+function lift (done) {
   var self = this;
   var routes = self.config.routes;
   var pins = [];
@@ -45,3 +46,5 @@ module.exports = function (done) {
     .listen(senecaConnection.options);
   process.nextTick(done);
 };
+
+module.exports = Promise.promisify(lift);
