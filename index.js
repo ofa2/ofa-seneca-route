@@ -41,8 +41,10 @@ function lift (done) {
   if(!senecaConnection.options.pins && !senecaConnection.options.pin) {
     senecaConnection.options.pin = '[' + pins.join(',') + ']';
   }
+  if(senecaConnection.transport) {
+    self.seneca.use(senecaConnection.transport);
+  }
   self.seneca
-    .use(senecaConnection.transport)
     .listen(senecaConnection.options);
   process.nextTick(done);
 };
