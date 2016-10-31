@@ -1,5 +1,5 @@
 {
-  "name": "framework-seneca-route",
+  "name": "ofa-seneca-route",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gongxiancao/framework-seneca-route.git"
+    "url": "git+https://github.com/gongxiancao/ofa-seneca-route.git"
   },
   "author": "gongxiancao@hotmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gongxiancao/framework-seneca-route/issues"
+    "url": "https://github.com/gongxiancao/ofa-seneca-route/issues"
   },
-  "homepage": "https://github.com/gongxiancao/framework-seneca-route#readme",
+  "homepage": "https://github.com/gongxiancao/ofa-seneca-route#readme",
   "dependencies": {
     "bluebird": "3.3.5",
     "lodash": "4.5.0"
