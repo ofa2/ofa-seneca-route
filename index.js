@@ -49,4 +49,15 @@ function lift (done) {
   process.nextTick(done);
 };
 
-module.exports = Promise.promisify(lift);
+function lower (done) {
+  var self = this;
+  self.seneca.act({role: 'seneca', cmd: 'shutdown'}, function (err) {
+    self.seneca.close(done);
+  });
+}
+
+module.exports = {
+  lift: Promise.promisify(lift),
+  lower: Promise.promisify(lower)
+};
+
