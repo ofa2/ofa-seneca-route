@@ -32,7 +32,7 @@ function lift (done) {
     self.seneca[method](pattern, actionMethod);
   });
 
-  var senecaConnectionName = (self.config.seneca || {}).connection;
+  var senecaConnectionName = _.merge({}, self.config.seneca, (self.config.seneca || {}).route).connection;
   var senecaConnection = self.config.connections[senecaConnectionName];
   if(senecaConnectionName && !senecaConnection) {
     throw new Error('unknown seneca connection:' + senecaConnectionName);
