@@ -1,23 +1,25 @@
 {
-  "name": "ofa-seneca-route",
-  "version": "1.0.3",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gongxiancao/ofa-seneca-route.git"
-  },
-  "author": "gongxiancao@hotmail.com",
+  "name": "ofa2-seneca-route",
+  "version": "1.0.0",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gongxiancao/ofa-seneca-route/issues"
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/plugin-external-helpers": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "rollup": "^0.58.2",
+    "rollup-plugin-babel": "^4.0.0-beta.4",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.3.0"
   },
-  "homepage": "https://github.com/gongxiancao/ofa-seneca-route#readme",
   "dependencies": {
-    "bluebird": "3.3.5",
-    "lodash": "4.5.0"
+    "bluebird": "^3.5.1",
+    "lodash": "^4.17.10"
   }
 }
