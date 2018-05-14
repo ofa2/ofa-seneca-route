@@ -18,22 +18,26 @@ function lift(done) {
     let actionParts = action.split('.');
     let controllerName = actionParts[0];
     let controller = self.controllers[controllerName];
+
     if (!controller) {
       throw new Error(`undefined controller: ${controllerName}`);
     }
 
     let actionMethodName = actionParts[1];
     let actionMethod = controller[actionMethodName];
+
     if (!actionMethod) {
       throw new Error(`undefined action method: ${action}`);
     }
+
     pins.push(`{${pattern}}`);
     self.seneca[method](pattern, actionMethod);
   });
 
-  let senecaConnectionName = _.merge({}, self.config.seneca, (self.config.seneca || {}).route)
-    .connection;
+  let senecaConnectionName = _.merge({}, self.config.seneca, (self.config.seneca || {}).route).connection;
+
   let senecaConnection = self.config.connections[senecaConnectionName];
+
   if (senecaConnectionName && !senecaConnection) {
     throw new Error(`unknown seneca connection:${senecaConnectionName}`);
   }
@@ -41,11 +45,16 @@ function lift(done) {
   if (!senecaConnection.options.pins && !senecaConnection.options.pin) {
     senecaConnection.options.pin = `[${pins.join(',')}]`;
   }
+
   if (senecaConnection.transport) {
     self.seneca.use(senecaConnection.transport);
   }
+
   self.seneca.listen(senecaConnection.options);
   process.nextTick(done);
 }
 
-export default Promise.promisify(lift);
+var index = Promise.promisify(lift);
+
+export default index;
+//# sourceMappingURL=bundle.esm.js.map
